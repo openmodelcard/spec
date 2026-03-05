@@ -1,0 +1,129 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://openmodelcard.org/schema/v0.1",
+  "title": "Open Model Card",
+  "description": "Schema for Open Model Card (.omc) files — the open standard for AI model documentation.",
+  "oneOf": [
+    { "$ref": "#/definitions/ModelCard" },
+    { "$ref": "#/definitions/ModelCardCollection" }
+  ],
+  "definitions": {
+    "ModelCard": {
+      "type": "object",
+      "required": ["id", "name", "provider", "description"],
+      "properties": {
+        "$schema": { "type": "string", "format": "uri" },
+        "id": {
+          "type": "string",
+          "description": "Unique identifier. Lowercase, hyphens only.",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "name": {
+          "type": "string",
+          "description": "Human-readable display name."
+        },
+        "provider": {
+          "type": "string",
+          "description": "Organisation that created the model."
+        },
+        "description": {
+          "type": "string",
+          "description": "1-3 sentence description of the model."
+        },
+        "version": {
+          "type": "string",
+          "description": "Model version string."
+        },
+        "date": {
+          "type": "string",
+          "description": "Release or last-updated date. ISO 8601.",
+          "format": "date"
+        },
+        "url": {
+          "type": "string",
+          "description": "Link to official model documentation.",
+          "format": "uri"
+        },
+        "modalities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["text", "image", "audio", "video", "code", "embedding"]
+          },
+          "description": "Input/output modalities supported by the model."
+        },
+        "context": {
+          "type": "string",
+          "description": "Context window size. e.g. 128k tokens"
+        },
+        "strengths": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Capability tags describing what the model is good at."
+        },
+        "license": {
+          "type": "string",
+          "description": "License type."
+        },
+        "pricing": {
+          "type": "object",
+          "properties": {
+            "input": { "type": "number", "description": "Cost per unit for input tokens." },
+            "output": { "type": "number", "description": "Cost per unit for output tokens." },
+            "unit": { "type": "string", "description": "Pricing unit. e.g. per 1M tokens" },
+            "notes": { "type": "string" }
+          }
+        },
+        "ratings": {
+          "type": "object",
+          "properties": {
+            "reasoning": { "type": "number", "minimum": 1, "maximum": 5 },
+            "coding": { "type": "number", "minimum": 1, "maximum": 5 },
+            "creativity": { "type": "number", "minimum": 1, "maximum": 5 },
+            "speed": { "type": "number", "minimum": 1, "maximum": 5 }
+          },
+          "description": "Subjective practitioner ratings on a 1-5 scale."
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "type"],
+            "properties": {
+              "id": { "type": "string" },
+              "type": {
+                "type": "string",
+                "enum": ["successor-of", "predecessor-of", "fine-tuned-from", "distilled-from", "same-family", "competes-with", "related-to"]
+              }
+            }
+          },
+          "description": "Relationships to other model cards."
+        },
+        "metadata": {
+          "type": "object",
+          "properties": {
+            "created": { "type": "string", "format": "date-time" },
+            "updated": { "type": "string", "format": "date-time" },
+            "bookmarked": { "type": "boolean" },
+            "icon": { "type": "string" },
+            "color": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" }
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "ModelCardCollection": {
+      "type": "object",
+      "required": ["models"],
+      "properties": {
+        "$schema": { "type": "string", "format": "uri" },
+        "version": { "type": "string" },
+        "models": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/ModelCard" },
+          "minItems": 1
+        }
+      }
+    }
+  }
+}
