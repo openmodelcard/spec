@@ -1,0 +1,113 @@
+{
+  "$schema": "https://openmodelcard.org/schema/v0.1",
+  "version": "1.0",
+  "models": [
+    {
+      "id": "gpt-4o",
+      "name": "GPT-4o",
+      "provider": "OpenAI",
+      "description": "OpenAI's flagship multimodal model combining text, vision, and audio capabilities in a single efficient architecture.",
+      "version": "2024-11-20",
+      "date": "2024-11-20",
+      "url": "https://platform.openai.com/docs/models/gpt-4o",
+      "modalities": ["text", "image", "audio"],
+      "context": "128k tokens",
+      "strengths": ["reasoning", "vision", "instruction-following", "multilingual"],
+      "license": "Commercial API",
+      "pricing": {
+        "input": 2.50,
+        "output": 10.00,
+        "unit": "per 1M tokens",
+        "notes": "Prices as of 2025-01"
+      },
+      "ratings": {
+        "reasoning": 5,
+        "coding": 5,
+        "creativity": 4,
+        "speed": 4
+      },
+      "links": [
+        { "id": "gpt-4o-mini", "type": "same-family" },
+        { "id": "claude-3-5-sonnet", "type": "competes-with" }
+      ],
+      "metadata": {
+        "created": "2025-01-01T00:00:00Z",
+        "updated": "2025-01-01T00:00:00Z",
+        "bookmarked": true,
+        "icon": "🟢",
+        "color": "#10a37f"
+      }
+    },
+    {
+      "id": "claude-3-5-sonnet",
+      "name": "Claude 3.5 Sonnet",
+      "provider": "Anthropic",
+      "description": "Anthropic's most intelligent model, excelling at complex reasoning, coding, and nuanced instruction-following with a strong safety profile.",
+      "version": "20241022",
+      "date": "2024-10-22",
+      "url": "https://docs.anthropic.com/en/docs/models-overview",
+      "modalities": ["text", "image"],
+      "context": "200k tokens",
+      "strengths": ["reasoning", "coding", "analysis", "instruction-following"],
+      "license": "Commercial API",
+      "pricing": {
+        "input": 3.00,
+        "output": 15.00,
+        "unit": "per 1M tokens",
+        "notes": "Prices as of 2025-01"
+      },
+      "ratings": {
+        "reasoning": 5,
+        "coding": 5,
+        "creativity": 5,
+        "speed": 3
+      },
+      "links": [
+        { "id": "gpt-4o", "type": "competes-with" },
+        { "id": "claude-3-opus", "type": "successor-of" }
+      ],
+      "metadata": {
+        "created": "2025-01-01T00:00:00Z",
+        "updated": "2025-01-01T00:00:00Z",
+        "bookmarked": true,
+        "icon": "🟣",
+        "color": "#7c3aed"
+      }
+    },
+    {
+      "id": "llama-3-70b",
+      "name": "Llama 3 70B",
+      "provider": "Meta",
+      "description": "Meta's open-source large language model with strong general capabilities, freely available for research and commercial use.",
+      "version": "3.0",
+      "date": "2024-04-18",
+      "url": "https://llama.meta.com/llama3/",
+      "modalities": ["text", "code"],
+      "context": "8k tokens",
+      "strengths": ["open-source", "self-hosted", "coding", "multilingual"],
+      "license": "Llama 3 Community License",
+      "pricing": {
+        "input": 0,
+        "output": 0,
+        "unit": "self-hosted",
+        "notes": "Free to run locally. API providers vary."
+      },
+      "ratings": {
+        "reasoning": 4,
+        "coding": 4,
+        "creativity": 3,
+        "speed": 5
+      },
+      "links": [
+        { "id": "llama-2-70b", "type": "successor-of" }
+      ],
+      "metadata": {
+        "created": "2025-01-01T00:00:00Z",
+        "updated": "2025-01-01T00:00:00Z",
+        "bookmarked": false,
+        "icon": "🦙",
+        "color": "#0ea5e9"
+      }
+    }
+  ]
+}
